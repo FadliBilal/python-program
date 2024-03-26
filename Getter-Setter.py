@@ -1,33 +1,28 @@
 class Orang:
-    def __init__(self, nama, pekerjaan=None, usia=None):
+    def __init__(self, nama, pekerjaan, usia):
         self.nama = nama
-        self._pekerjaan = pekerjaan
-        self._usia = usia
+        self.__pekerjaan = pekerjaan
+        self.__usia = usia
 
     @property
     def pekerjaan(self):
-        return self._pekerjaan
+        return self.__pekerjaan
 
     @pekerjaan.setter
-    def pekerjaan(self, value):
-        self._pekerjaan = value
+    def pekerjaan(self, pekerjaan):
+        self.__pekerjaan = pekerjaan
 
     @property
     def usia(self):
-        return self._usia
+        return self.__usia
 
     @usia.setter
-    def usia(self, value):
-        self._usia = value
+    def usia(self, usia):
+        self.__usia = usia
 
-dona = Orang("Dona")
-malik = Orang("Malik")
+# Objek
+dona = Orang("Dona", "Guru", 35)
+malik = Orang("Malik", "Dokter", 40)
 
-dona.pekerjaan = "Guru"
-dona.usia = 35
-
-malik.pekerjaan = "Dokter"
-malik.usia = 40
-
-print(f"Informasi Dona: Pekerjaan {dona.pekerjaan}, Usia : {dona.usia} tahun")
-print(f"Informasi Malik: Pekerjaan {malik.pekerjaan}, Usia : {malik.usia} tahun")
+print(f"Dona: Pekerjaannya adalah {dona.pekerjaan}, Usianya adalah {dona.usia} tahun")
+print(f"Malik: Pekerjaannya adalah {malik.pekerjaan}, Usianya adalah {malik.usia} tahun")
