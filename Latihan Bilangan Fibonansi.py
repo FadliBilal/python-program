@@ -1,5 +1,3 @@
-# Fibonansi dengan perulangan rekursif
-# Target output BATAS DERET
 def fib(n):
     if n <= 1:
         return n
@@ -10,7 +8,7 @@ batas = int(input("Masukkan BATAS DERET bilangan Fibonansi : "))
 
 print("Deret Fibonacci:")
 for i in range(batas):
-    print(fibonacci(i), end=" ")
+    print(fib(i), end=" ")
 
 # Fibonansi dengan perulangan while
 # Target Output BATAS BILANGAN dari inputan

@@ -12,6 +12,6 @@ class Main:
     def hitung_luas_segitiga(self):
         return self.segitiga.rumus_luas()
 
-run = Main()
-print("Luas segitiga:", run.hitung_luas_segitiga())
-print("Luas lingkaran:", run.hitung_luas_lingkaran())
+m = Main()
+print("Luas segitiga:", m.hitung_luas_segitiga())
+print("Luas lingkaran:", m.hitung_luas_lingkaran())
