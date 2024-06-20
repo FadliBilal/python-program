@@ -28,11 +28,11 @@ class Database:
         cursor.execute(f"CREATE DATABASE IF NOT EXISTS {self.database}")
         conn.close()
 
-    def create_table_sepatu(self):
+    def create_table(self):
         self.cursor.execute("""
         CREATE TABLE IF NOT EXISTS sepatu (
             kode VARCHAR(50) PRIMARY KEY,
-            merk VARCHAR(255),
+            merk VARCHAR(25),
             ukuran INT,
             harga INT
         )
@@ -74,10 +74,10 @@ def main():
     db = Database()
     db.create_database()
     db.connect()
-    db.create_table_sepatu()
+    db.create_table()
 
     while True:
-        print("\n=== APLIKASI CRUD SEPATU ===")
+        print("\n=== CRUD SEPATU ===")
         print("1. Tambah Data Sepatu")
         print("2. Lihat Data Sepatu")
         print("3. Update Data Sepatu")
@@ -98,18 +98,20 @@ def main():
             sepatu = Sepatu(kode, merk, ukuran, harga)
             db.insert(sepatu)
             print("Data sepatu berhasil ditambahkan")
+
         elif pilihan == 2:
             result = db.read()
             if not result:
                 print("Tidak ada data sepatu")
             else:
-                print("\nData Sepatu:")
+                print("\n====Data Sepatu====")
                 for row in result:
                     print("Kode:", row[0])
                     print("Merk:", row[1])
                     print("Ukuran:", row[2])
                     print("Harga: Rp ", row[3])
                     print("--------------------")
+
         elif pilihan == 3:
             kode = input("Masukkan kode sepatu yang ingin diupdate: ")
             merk = input("Merk baru: ")
@@ -118,6 +120,7 @@ def main():
             sepatu = Sepatu(kode, merk, ukuran, harga)
             db.update(sepatu)
             print("Data sepatu berhasil diupdate")
+
         elif pilihan == 4:
             kode = input("Masukkan kode sepatu yang ingin dihapus: ")
             db.delete(kode)
@@ -125,11 +128,9 @@ def main():
         elif pilihan == 5:
             break
         else:
-            print("Pilihan tidak valid")
+            print("Pilihan tidak ada, coba lagi.")
 
     db.close()
     print("Program selesai")
 
-
-if __name__ == "__main__":
-    main()
+main()
